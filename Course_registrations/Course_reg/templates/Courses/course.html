@@ -1,0 +1,14 @@
+{% extends 'Courses/layout.html' %}
+{% block body %}
+
+<h1>Course: {{ Courses.id }}</h1>
+<ul>
+    <li>Subject: {{ Courses.subject }}</li>
+    <li>Subject_id: {{ Courses.subject_id }}</li>
+    <li>Credit: {{ Courses.credit }}</li>
+    <li>Seat: {{ Courses.seat }}</li>
+</ul>
+
+<a href="{% url 'index' %}">Back to Course List</a>
+{% endblock body %}
+
