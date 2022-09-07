@@ -12,10 +12,11 @@ class Course(models.Model):
         return f'{self.id}: {self.subject_id} {self.subject} {self.credit} {self.seat}'
     
 class Date(models.Model):
-    section = models.ForeignKey(Course, on_delete=models.CASCADE)
+    subject_id = models.ForeignKey(Course, on_delete=models.CASCADE)
+    section = models.CharField(max_length=50)
     time = models.CharField(max_length=50)
     day = models.CharField(max_length=50)
 
     def __str__(self):
-        return f'{self.id}: {self.time} {self.day}'
+        return f'{self.subject_id}: {self.section} {self.time} {self.day}'
     
