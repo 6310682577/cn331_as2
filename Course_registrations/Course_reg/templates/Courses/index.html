@@ -1,7 +1,21 @@
 {% extends 'Courses/layout.html' %}
 {% block body %}
 
-<h1>Courses List:</h1>
+
+<style>
+    .orange {color : #b45405}
+    .purple {color : #5c025f}
+    .uppercase {text-transform: uppercase;}
+    
+    .sansfont {font-family: sans-serif;}
+    .courfont {font-family: 'Courier New', Courier, monospace;}
+</style>
+
+
+<div class = "purple sansfont">
+    <h1>Courses List:</h1>
+</div>
+
 <ul>
     {% for Course in Courses %}
     <li>
