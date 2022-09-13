@@ -19,4 +19,3 @@ class Date(models.Model):
 
     def __str__(self):
         return f'{self.subject_id}: {self.section} {self.time} {self.day}'
-    
