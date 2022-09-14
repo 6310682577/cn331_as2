@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
-from Course_reg.models import Course
+from Course_reg.models import Course, Date
 
 # Create your views here.
 
@@ -35,6 +35,7 @@ def logout_view(request):
 
 def register_view(request):
     course = Course.objects.all()
+    date = Date.objects.all()
     return render(request, 'users/register.html', {
-        'Courses': course
+        'Courses': course, 'Dates': date
     })

@@ -1,13 +1,26 @@
 {% extends 'users/layout.html' %}
 {% block body %}
-<ul>
-    {% for Course in Courses %}
-    <li>
-        {{ Course}}
-    </li>
+<table border = "1" cellpadding = "5" cellspacing = "1">
+    <td>Subject_id</td>
+    <td>Subject_id</td>
+    <td>Credit</td>
+    <td>Section</td>
+    <td>Time</td>
+    <td>Day</td>
+    <td>Seat</td>
+    {% for Date in Dates %}
+    <tr>
+        <td>{{ Date.subject_id.subject_id }}</td>
+        <td>{{ Date.subject_id.subject }}</td>
+        <td>{{ Date.subject_id.credit }}</td>
+        <td>{{ Date.section }}</td>
+        <td>{{ Date.time }}</td>
+        <td>{{ Date.day }}</td>
+        <td>{{ Date.subject_id.seat }}</td>
+    </tr>
     {% empty %}
-    <li>No Course</li>
+    <td>No Course<td>
     {% endfor %}
-</ul>
+</table>
 <a href="{% url 'index' %}">Back to Index</a>
 {% endblock %}
