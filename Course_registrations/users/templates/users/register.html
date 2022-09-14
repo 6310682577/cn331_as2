@@ -1,0 +1,13 @@
+{% extends 'users/layout.html' %}
+{% block body %}
+<ul>
+    {% for Course in Courses %}
+    <li>
+        {{ Course}}
+    </li>
+    {% empty %}
+    <li>No Course</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'index' %}">Back to Index</a>
+{% endblock %}
