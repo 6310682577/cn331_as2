@@ -11,7 +11,7 @@
                 linear-gradient(to right bottom, 
                 rgba(76, 216, 255, 0.8),
                 rgba(30, 108, 217, 0.8)),
-                url('https://cdn.discordapp.com/attachments/812985864446935095/1019605085564702790/unknown.png');
+                url("images/sky_1.jpg");
         
                 background-size: cover;
                 background-position: top;
@@ -37,9 +37,11 @@
 <ul>
     {% for Course in Courses %}
     <li>
-        <a href="{% url 'Course' Course.id %}">
-        {{ Course}}
-        </a>
+        <div class = "courfont">
+            <a href="{% url 'Course' Course.id %}">
+                {{ Course}}
+            </a>
+        </div>
     </li>
     {% empty %}
     <li>No Course</li>
