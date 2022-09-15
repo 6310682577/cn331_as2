@@ -3,12 +3,15 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+from Course_reg.models import Course, Date
+
 # Create your views here.
 
 def index(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect(reverse('login'))
-    pass
+    else:
+        return render(request, 'users/index.html')
 
 def login_view(request):
     if request.method == "POST":
@@ -17,9 +20,22 @@ def login_view(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            return HttpResponseRedirect(reverse('index'))
         else:
-            render(request, 'users/login.html')
+            return render(request, 'users/login.html', {
+                'message': 'Invalid credential.'
+            })
     return render(request, 'users/login.html')
 
 def logout_view(request):
-    pass
+    logout(request)
+    return render(request, 'users\login.html', {
+        'message': 'You are Logged out'
+    })
+
+def register_view(request):
+    course = Course.objects.all()
+    date = Date.objects.all()
+    return render(request, 'users/register.html', {
+        'Courses': course, 'Dates': date
+    })

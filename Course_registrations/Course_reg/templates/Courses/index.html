@@ -6,14 +6,32 @@
     .orange {color : #b45405}
     .purple {color : #5c025f}
     .uppercase {text-transform: uppercase;}
+    .header{  	height: 12vh;
+                background-image: 
+                linear-gradient(to right bottom, 
+                rgba(76, 216, 255, 0.8),
+                rgba(30, 108, 217, 0.8)),
+                url('https://cdn.discordapp.com/attachments/812985864446935095/1019605085564702790/unknown.png');
+        
+                background-size: cover;
+                background-position: top;
+                position: relative;
+                text-align: center;
+  
+                clip-path: polygon(0 0, 100% 0, 70% 75vh, 0 100%);}
     
+    .headerpos{ top: 10px;  
+                left: 40px;
+                position: absolute; }
+
+
     .sansfont {font-family: sans-serif;}
     .courfont {font-family: 'Courier New', Courier, monospace;}
 </style>
 
 
-<div class = "purple sansfont">
-    <h1>Courses List:</h1>
+<div class = "header courfont">
+    <h1 class = "headerpos">Courses List:</h1>
 </div>
 
 <ul>
