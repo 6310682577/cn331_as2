@@ -1,11 +1,42 @@
 {% extends 'users/layout.html' %}
 {% block body %}
-<h1>Welcome, {{ request.user.username }}</h1>
-<ul>
-    <li>Username: {{ request.user.username }}</li>
-    <li>Email: {{ request.user.email }}</li>
+
+<style>
+    .curve {
+        width:700px;
+        height:10vh;
+        position:relative;
+        background-image: linear-gradient(#e8b5ff, #6c4ec0);
+        border-top-left-radius:2px;
+        border-top-right-radius:2px;
+        border-bottom-left-radius: 50% 60%;
+        border-bottom-right-radius: 50% 60%;
+        text-align: center;
+        border-bottom = 40px;
+      }
+
+
+    .sansfont {font-family: sans-serif;}
+    .courfont {font-family: 'Courier New', Courier, monospace;}
+    .gillfont { font-size : 25px;
+                font-family: 'Trebuchet MS', sans-serif;}
+
+    .borderbottom { padding-top: 2px;
+                    padding-bottom: 4px;
+                    border-bottom: 2px solid black; }
+
+    
+</style>
+
+<div class = "curve gillfont">
+    <h1 style = "font-size : 37px ;">Welcome, {{ request.user.username }}</h1>
+</div>
+
+<ul class = "gillfont">
+    <li class = "borderbottom" , style = "width : 350px">Username: {{ request.user.username }}</li>
+    <li class = "borderbottom" , style = "width : 350px">Email: {{ request.user.email }}</li>
 </ul>
-<a href="{% url 'register' %}">Register</a>
+<a href="{% url 'register' %}" , style = "font-size : 25px ; font-family: sans-serif">Register</a>
 {% comment %} <table border = "1" cellpadding = "5" cellspacing = "1">
     <td>Subject</td>
     <td>Subject_id</td>
@@ -17,5 +48,5 @@
     </tr>
 </table> {% endcomment %}
 
-<a style="position: absolute; top: 0; right: 0; width: 100px; text-align:right;" href="{% url 'logout' %}">Log out</a>
+<a style="position: absolute; top: 0; right: 0; width: 100px; text-align:right; font-size : 25px; font-family: sans-serif;" href="{% url 'logout' %}">Log out</a>
 {% endblock %}
