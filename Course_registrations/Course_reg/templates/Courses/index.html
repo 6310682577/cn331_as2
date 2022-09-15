@@ -3,8 +3,6 @@
 
 
 <style>
-    .orange {color : #b45405}
-    .purple {color : #5c025f}
     .uppercase {text-transform: uppercase;}
     .header{  	height: 12vh;
                 background-image: 
@@ -18,26 +16,31 @@
                 position: relative;
                 text-align: center;
   
-                clip-path: polygon(0 0, 100% 0, 70% 75vh, 0 100%);}
+                clip-path: polygon(0 0, 40% 0, 70% 75vh, 0 100%);}
     
     .headerpos{ top: 10px;  
                 left: 40px;
                 position: absolute; }
 
+    .margin {   padding-bottom: 4px;
+                border-bottom: 2px solid black;}
+
 
     .sansfont {font-family: sans-serif;}
     .courfont {font-family: 'Courier New', Courier, monospace;}
+    .gillfont { font-size : 20px;
+                font-family: 'Trebuchet MS', sans-serif;}
 </style>
 
 
-<div class = "header courfont">
+<div class = "header gillfont">
     <h1 class = "headerpos">Courses List:</h1>
 </div>
 
 <ul>
     {% for Course in Courses %}
-    <li>
-        <div class = "courfont">
+    <li style = "width : 450px">
+        <div class = "gillfont margin">
             <a href="{% url 'Course' Course.id %}">
                 {{ Course}}
             </a>
