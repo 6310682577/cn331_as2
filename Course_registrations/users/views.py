@@ -34,8 +34,7 @@ def logout_view(request):
     })
 
 def register_view(request):
-    course = Course.objects.all()
     date = Date.objects.all()
     return render(request, 'users/register.html', {
-        'Courses': course, 'Dates': date
+        'Dates': date
     })
