@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Users</title>
-    </head>
-    <body>
-        {% block body %}
-        {% endblock %}
-    </body>
+    <center>
+        <head>
+            <title>Users</title>
+        </head>
+        <body>
+            <a style="position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                text-align:right;"
+                href="{% url 'logout' %}">
+                Log out
+            </a>
+            {% block body %}
+            {% endblock %}
+        </body>
+    </center>
 </html>

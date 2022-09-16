@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 from Course_reg.models import Course, Date
 
 # Create your views here.
@@ -34,7 +35,15 @@ def logout_view(request):
     })
 
 def register_view(request):
-    date = Date.objects.all()
-    return render(request, 'users/register.html', {
-        'Dates': date
-    })
+    if request.method == "POST":
+        searched = request.POST['searched']
+        date = Date.objects.filter(subject_id__subject_id__contains=searched)
+        return render(request, 'users/register.html',{
+            'searched' : searched,
+            'Dates' : date
+        })
+    else:
+        date = Date.objects.all()
+        return render(request, 'users/register.html', {
+            'Dates' : date
+        })
