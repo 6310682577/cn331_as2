@@ -36,14 +36,21 @@ def logout_view(request):
 
 def register_view(request):
     if request.method == "POST":
-        searched = request.POST['searched']
-        date = Date.objects.filter(subject_id__subject_id__contains=searched).order_by('subject_id')
+        searched = str(request.POST['searched']).upper()
+        if searched == 'SM':
+            date = Date.objects.filter(subject_id__subject_id__contains=searched).order_by('subject_id')
+        else:
+            date = Date.objects.filter(subject_id__subject_id__contains=searched).exclude(subject_id__subject_id__contains='SM').order_by('subject_id')
         return render(request, 'users/register.html',{
             'searched' : searched,
             'Dates' : date
         })
     else:
-        date = Date.objects.all()
+        date = Date.objects.exclude(subject_id__subject_id__contains='SM')
         return render(request, 'users/register.html', {
             'Dates' : date
         })
+
+def enroll(request, course_id):
+    if request.method == "POST":
+        course = Course.objects.get(pk=course_id)
