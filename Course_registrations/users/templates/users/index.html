@@ -32,12 +32,14 @@
     <h1 style = "font-size : 37px ;">Welcome, {{ request.user.username }}</h1>
 </div>
 
-<ul class = "gillfont">
-    <li class = "borderbottom" , style = "width : 350px">Username: {{ request.user.username }}</li>
-    <li class = "borderbottom" , style = "width : 350px">Email: {{ request.user.email }}</li>
-</ul>
-<a href="{% url 'register' %}" , style = "font-size : 25px ; font-family: sans-serif">Register</a>
-{% comment %} <table border = "1" cellpadding = "5" cellspacing = "1">
+<body class = "gillfont">
+    <p class = "borderbottom" , style = "width : 350px">Username: {{ request.user.username }}</p>
+    <p class = "borderbottom" , style = "width : 350px">Email: {{ request.user.email }}</p>
+
+</body>
+
+<a href="{% url 'register' %}" , style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Register</a>
+    {% comment %} <table border = "1" cellpadding = "5" cellspacing = "1">
     <td>Subject</td>
     <td>Subject_id</td>
     <td>credit</td>
