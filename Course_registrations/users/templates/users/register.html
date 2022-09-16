@@ -1,37 +1,70 @@
 {% extends 'users/layout.html' %}
 {% block body %}
-<form action="{% url 'register' %}" method="post">
-    {% csrf_token %}
-    <input type="text" name="searched" placeholder="search">
-    <input type="submit" value="search">
-</form>
 
-{% if Dates %}
-    <table border = "1" cellpadding = "5" cellspacing = "1">
-        <td>Subject_id</td>
-        <td>Subject</td>
-        <td>Credit</td>
-        <td>Section</td>
-        <td>Day</td>
-        <td>Time</td>
-        <td>Seat</td>
-        {% for Date in Dates %}
-        <tr>
-            <td>{{ Date.subject_id.subject_id }}</td>
-            <td>{{ Date.subject_id.subject }}</td>
-            <td>{{ Date.subject_id.credit }}</td>
-            <td>{{ Date.start_time }} - {{ Date.end_time }}</td>
-            <td>{{ Date.section }}</td>
-            <td>{{ Date.day }}</td>
-            <td>{{ Date.subject_id.seat }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-{% else %}
-    <h1>No Course<h1>
-{% endif %}
 
-<p>
-    <a href="{% url 'index' %}">Back to Index</a>
+<style>
+    .gillfont { font-size : 25px;
+                font-family: 'Trebuchet MS', sans-serif;}
+    .borderbottom { padding-top: 2px;
+                    padding-bottom: 4px;
+                    border-bottom: 2px solid black; }
+    
+    .body {
+        background-size: cover;
+        background-image: linear-gradient(to bottom right, #EAFDFF, #52B1FF);
+        height : 105%;
+    }
+    .indexpos {   
+                    text-align:left;
+                    vertical-align:top;
+                    top: 0vh;
+                    left -5vh; 
+                    width: 200px; }
+  
+</style>
+
+<div class = "body">
+    <div class = "gillfont" style = "bottom : 5px ; position:relative;">
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="searched" placeholder="search" style = "width : 200px ; height : 25px; top : 10px ; position:relative;">
+            <input type="submit" value="search" style = "width : 100px ; height : 25px; top : 10px ; position:relative;">
+        </form>
+    </div>
+
+    <p>
+    <a href="{% url 'index' %}" class = "gillfont indexpos" >Back to Index</a>
 </p>
-{% endblock %}
+    
+
+    {% if Dates %}
+    <div class = "gillfont" style = "position:relative; top : 10px">
+            <table border = "2" cellpadding = "5" cellspacing = "2" style = "background-color : #FFFFFF">
+                <td>Subject_id</td>
+                <td>Subject</td>
+                <td>Credit</td>
+                <td>Section</td>
+                <td>Day</td>
+                <td>Time</td>
+                <td>Seat</td>
+                {% for Date in Dates %}
+                <tr>
+                    <td>{{ Date.subject_id.subject_id }}</td>
+                    <td>{{ Date.subject_id.subject }}</td>
+                    <td>{{ Date.subject_id.credit }}</td>
+                    <td>{{ Date.start_time }} - {{ Date.end_time }}</td>
+                    <td>{{ Date.section }}</td>
+                    <td>{{ Date.day }}</td>
+                    <td>{{ Date.subject_id.seat }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h1>No Course<h1>
+        {% endif %}
+    </div>
+
+    
+    {% endblock %}
+    
+</div>
