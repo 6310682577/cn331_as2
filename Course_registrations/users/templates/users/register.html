@@ -12,8 +12,14 @@
     .body {
         background-size: cover;
         background-image: linear-gradient(to bottom right, #EAFDFF, #52B1FF);
-        height : 100vh;
-      }
+        height : 105%;
+    }
+    .indexpos {   
+                    text-align:left;
+                    vertical-align:top;
+                    top: 0vh;
+                    left -5vh; 
+                    width: 200px; }
   
 </style>
 
@@ -21,10 +27,15 @@
     <div class = "gillfont" style = "bottom : 5px ; position:relative;">
         <form action="{% url 'register' %}" method="post">
             {% csrf_token %}
-            <input type="text" name="searched" placeholder="search" style = "width : 200px ; height : 25px; top : 5px ; position:relative;">
-            <input type="submit" value="search" style = "width : 100px ; height : 25px; top : 5px ; position:relative;">
+            <input type="text" name="searched" placeholder="search" style = "width : 200px ; height : 25px; top : 10px ; position:relative;">
+            <input type="submit" value="search" style = "width : 100px ; height : 25px; top : 10px ; position:relative;">
         </form>
     </div>
+
+    <p>
+    <a href="{% url 'index' %}" class = "gillfont indexpos" >Back to Index</a>
+</p>
+    
 
     {% if Dates %}
     <div class = "gillfont" style = "position:relative; top : 10px">
@@ -53,9 +64,6 @@
         {% endif %}
     </div>
 
-    <p>
-        <a href="{% url 'index' %}" class = "gillfont" style = "bottom : 10% ; position:absolute;">Back to Index</a>
-    </p>
     
     {% endblock %}
     
