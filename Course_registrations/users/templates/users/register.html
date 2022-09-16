@@ -33,29 +33,64 @@
     </div>
 
     <p>
-    <a href="{% url 'index' %}" class = "gillfont indexpos" >Back to Index</a>
-</p>
-    
+        <a href="{% url 'index' %}" class = "gillfont indexpos" >Back to Index</a>
+    </p>
 
-    {% if Dates %}
     <div class = "gillfont" style = "position:relative; top : 10px">
+        {% if Enroll.count != 0 %}
             <table border = "2" cellpadding = "5" cellspacing = "2" style = "background-color : #FFFFFF">
                 <td>Subject_id</td>
                 <td>Subject</td>
                 <td>Credit</td>
                 <td>Section</td>
-                <td>Day</td>
                 <td>Time</td>
+                <td>Day</td>
+                {% for enroll in Enroll.all %}
+                <tr>
+                    <td>{{ enroll.subject_id.subject_id }}</td>
+                    <td>{{ enroll.subject_id.subject }}</td>
+                    <td>{{ enroll.subject_id.credit }}</td>
+                    <td>{{ enroll.section }}</td>
+                    <td>{{ enroll.start_time }} - {{ enroll.end_time }}</td>
+                    <td>{{ enroll.day }}</td>
+                    <td><form action="{% url 'del_enroll' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="student" value="{{ request.user.username }}">
+                        <input type="hidden" name="section" value="{{ enroll.section }}">
+                        <button name="subject_id" value="{{ enroll.subject_id.subject_id }}" type="Delete">remove</option>
+                    </form></td>
+                </tr>
+                {% endfor %}
+            </table>
+            <h1></h1>
+        {% endif %}
+
+        {% if Dates %}
+            <table border = "2" cellpadding = "5" cellspacing = "2" style = "background-color : #FFFFFF">
+                <td>Subject_id</td>
+                <td>Subject</td>
+                <td>Credit</td>
+                <td>Section</td>
+                <td>Time</td>
+                <td>Day</td>
                 <td>Seat</td>
                 {% for Date in Dates %}
                 <tr>
                     <td>{{ Date.subject_id.subject_id }}</td>
                     <td>{{ Date.subject_id.subject }}</td>
                     <td>{{ Date.subject_id.credit }}</td>
-                    <td>{{ Date.start_time }} - {{ Date.end_time }}</td>
                     <td>{{ Date.section }}</td>
+                    <td>{{ Date.start_time }} - {{ Date.end_time }}</td>
                     <td>{{ Date.day }}</td>
-                    <td>{{ Date.subject_id.seat }}</td>
+                    <td>{{ Date.seat }}</td>
+                    {% if Date.seat != 0 %}
+                    <td><form action="{% url 'enroll' %}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="student" value="{{ request.user.username }}">
+                        <input type="hidden" name="section" value="{{ Date.section }}">
+                        <button name="subject_id" value="{{ Date.subject_id.subject_id }}" type="Submit">submit</option>
+                    </form></td>
+                    {% endif %}
                 </tr>
                 {% endfor %}
             </table>
@@ -64,7 +99,7 @@
         {% endif %}
     </div>
 
-    
-    {% endblock %}
+
+{% endblock %}
     
 </div>

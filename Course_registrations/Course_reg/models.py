@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -6,11 +7,9 @@ class Course(models.Model):
     subject = models.CharField(max_length=50)
     subject_id = models.CharField(max_length=50)
     credit = models.IntegerField()
-    seat = models.IntegerField()
-    users = models.ManyToManyField('auth.User', null=True, blank=True)
 
     def __str__(self):
-        return f'{self.id}: {self.subject_id} {self.subject} {self.credit} {self.seat}'
+        return f'{self.id}: {self.subject_id} {self.subject} {self.credit}'
     
 class Date(models.Model):
     subject_id = models.ForeignKey(Course, on_delete=models.CASCADE)
@@ -19,6 +18,14 @@ class Date(models.Model):
     end_time = models.CharField(max_length=50)
     day = models.CharField(max_length=50)
     room = models.CharField(max_length=50)
+    seat = models.IntegerField()
 
     def __str__(self):
-        return f'{self.subject_id}: {self.section} {self.start_time} {self.end_time} {self.day}'
+        return f'{self.subject_id}: {self.section} {self.start_time} {self.end_time} {self.day} {self.seat}'
+
+class Student(models.Model):
+    name = models.ForeignKey(User, on_delete=models.CASCADE)
+    course_enroll = models.ManyToManyField(Date, related_name='student')
+
+    def __str__(self):
+        return f"{self.name.first_name} {self.name.last_name}"
