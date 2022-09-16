@@ -37,7 +37,7 @@ def logout_view(request):
 def register_view(request):
     if request.method == "POST":
         searched = request.POST['searched']
-        date = Date.objects.filter(subject_id__subject_id__contains=searched)
+        date = Date.objects.filter(subject_id__subject_id__contains=searched).order_by('subject_id')
         return render(request, 'users/register.html',{
             'searched' : searched,
             'Dates' : date
