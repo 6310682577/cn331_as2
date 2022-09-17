@@ -73,6 +73,8 @@ def enroll(request):
     if request.method == "POST":
         date = Date.objects.get(subject_id__subject_id=request.POST['subject_id'], section=request.POST['section'])
         student = Student.objects.get(name__username=request.user)
+        print(date.seat)
+        print(student.course_enroll.all())
         if date not in student.course_enroll.all():
             Date.objects.filter(subject_id__subject_id=request.POST['subject_id'], section=request.POST['section']).update(seat=(date.seat - 1))
             if date.seat == 0:
