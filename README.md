@@ -34,8 +34,8 @@
 2. **Course Enrolled**
 บอกชื่อรหัสวิชา ชื่อรายวิชา และ section ที่ลงทะเบียนเรียน 
 โดยมีปุ่มกลับไปหน้าหลักอยู่ตรงกลาง
-<img src="README_Object/course_enrolled.png" width="480" height="242.5"/>
-<img src="README_Object/course_enrolled_have.png" width="480" height="242.5"/>
+<img src="README_Object/Course_enrolled.png" width="480" height="242.5"/>
+<img src="README_Object/Course_enrolled_have.png" width="480" height="242.5"/>
 
 
 3. **Register**
