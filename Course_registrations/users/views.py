@@ -42,15 +42,18 @@ def register_view(request):
         date = Date.objects.filter(subject_id__subject_id__contains=searched)
         if searched == 'SM':
             date = date.order_by('subject_id')
-        # elif enroll.get(subject_id=date.subject_id) != None:
-        #     date = date.exclude(subject_id__in=enroll.all().values_list('subject_id'))
-        # elif enroll.course_enroll.get(subject_id=date.section) != None:
-        #     date = date.exclude(section__in=enroll.all().values_list('section'))
         else:
             date = date.exclude(subject_id__subject_id__contains='SM').order_by('subject_id')
     else:
         searched = None
         date = Date.objects.exclude(subject_id__subject_id__contains='SM')
+    
+    if enroll.filter(subject_id__in=date.values_list('subject_id')) != None:
+        date = date.exclude(subject_id__in=enroll.all().values_list('subject_id'))
+    if enroll.filter(section__in=date.values_list('section')) != None:
+        date = date.exclude(section__in=enroll.all().values_list('section'))
+    if enroll.filter(start_time__in=date.values_list('start_time')) != None:
+        date = date.exclude(section__in=enroll.all().values_list('start_time'))
 
     # enroll = Student.objects.get(name__username=request.user).course_enroll
 
@@ -58,6 +61,12 @@ def register_view(request):
         'searched' : searched,
         'Dates' : date,
         'Enroll' : enroll
+    })
+
+def enrolled_view(request):
+    enrolled = Student.objects.get(name__username=request.user).course_enroll
+    return render(request, 'users/enrolled.html', {
+        'Enrolled' : enrolled
     })
 
 def enroll(request):

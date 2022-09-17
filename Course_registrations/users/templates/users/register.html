@@ -82,7 +82,6 @@
                     <td>{{ Date.section }}</td>
                     <td>{{ Date.start_time }} - {{ Date.end_time }}</td>
                     <td>{{ Date.day }}</td>
-<<<<<<< HEAD
                     <td>{{ Date.seat }}</td>
                     {% if Date.seat != 0 %}
                     <td><form action="{% url 'enroll' %}" method="post">
@@ -92,10 +91,6 @@
                         <button name="subject_id" value="{{ Date.subject_id.subject_id }}" type="Submit">submit</option>
                     </form></td>
                     {% endif %}
-=======
-                    <td>{{ Date.start_time }} - {{ Date.end_time }}</td>
-                    <td>{{ Date.subject_id.seat }}</td>
->>>>>>> 24f07afbf964c43ec252cd107b4334b99099500b
                 </tr>
                 {% endfor %}
             </table>

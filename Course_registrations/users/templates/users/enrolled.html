@@ -1,0 +1,57 @@
+{% extends 'users/layout.html' %}
+{% block body %}
+
+
+<style>
+    .uppercase {text-transform: uppercase;}
+    .header{  	height: 12vh;
+                background-image: 
+                linear-gradient(to right bottom, 
+                rgba(76, 216, 255, 0.8),
+                rgba(30, 108, 217, 0.8)),
+                url("images/sky_1.jpg");
+        
+                background-size: cover;
+                background-position: top;
+                position: relative;
+                text-align: center;
+  
+                clip-path: polygon(0 0, 40% 0, 70% 75vh, 0 100%);}
+    
+    .headerpos{ top: 10px;  
+                left: 40px;
+                position: absolute; }
+
+    .margin {   padding-bottom: 4px;
+                border-bottom: 2px solid black;}
+
+
+    .sansfont {font-family: sans-serif;}
+    .courfont {font-family: 'Courier New', Courier, monospace;}
+    .gillfont { font-size : 20px;
+                font-family: 'Trebuchet MS', sans-serif;}
+</style>
+
+<div class = "curve gillfont">
+    <h1 style = "font-size : 37px ;">Courses Enrolled List:</h1>
+</div>
+
+<p>
+    <a href="{% url 'index' %}" class = "gillfont indexpos" >Back to Index</a>
+</p>
+
+<ul>
+    {% for enrolled in Enrolled.all %}
+    <p style = "width : 10px">
+        <div class = "gillfont margin">
+            {{ enrolled.subject_id.subject_id }}
+            {{ enrolled.subject_id.subject }}
+            {{ enrolled.section }}
+        </div>
+    </p>
+    {% empty %}
+    <li>No Course</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
