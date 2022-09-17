@@ -55,6 +55,8 @@ def register_view(request):
     if enroll.filter(start_time__in=date.values_list('start_time')) != None:
         date = date.exclude(section__in=enroll.all().values_list('start_time'))
 
+    date = date.filter(status=True)
+
     # enroll = Student.objects.get(name__username=request.user).course_enroll
 
     return render(request, 'users/register.html',{

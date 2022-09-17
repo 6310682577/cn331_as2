@@ -18,7 +18,10 @@ class Date(models.Model):
     end_time = models.CharField(max_length=50)
     day = models.CharField(max_length=50)
     room = models.CharField(max_length=50)
+    year = models.CharField(max_length=50)
+    semester = models.CharField(max_length=50)
     seat = models.IntegerField()
+    status = models.BooleanField()
 
     def __str__(self):
         return f'{self.subject_id}: {self.section} {self.start_time} {self.end_time} {self.day} {self.seat}'
