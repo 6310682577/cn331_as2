@@ -44,7 +44,7 @@
     </div>
 
     <p>
-        <a href="{% url 'index' %}" class = "gillfont indexpos" style = "font-size : 25px">Back to Index</a>
+        <a href="{% url 'index' %}" class = "gillfont indexpos" style = "font-size : 25px ; position : relative ; text-align : center ; ">Back to Index</a>
     </p>
 
     <ul>
@@ -57,7 +57,7 @@
             </div>
         </p>
         {% empty %}
-        <li>No Course</li>
+        <p class = "gillfont" style = "text-align : center ; position : relative ; font-size : 25px">No Course</p>
         {% endfor %}
     </ul>
 
