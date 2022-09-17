@@ -47,10 +47,12 @@
     <img src="README_Object/regist_no.png" width="480" height="242.5"/>
 
 **Admin ID**
+
 username: admin
 password: 1234
 
 **User ID**
+
 1. username: best
    password: best1234
 2. username: center
