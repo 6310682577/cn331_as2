@@ -4,7 +4,7 @@ from .models import Course
 # Create your views here.
 
 def index(request):
-    course = Course.objects.all()
+    course = Course.objects.exclude(subject_id__contains="SM").all()
     return render(request, 'Courses/index.html', {
         'Courses': course
     })
