@@ -55,5 +55,5 @@ password: 1234
 
 1. username: best
    password: best1234
-2. username: center
+1. username: center
    password: khomchan1234
