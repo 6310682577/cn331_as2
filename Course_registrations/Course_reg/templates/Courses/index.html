@@ -1,0 +1,54 @@
+{% extends 'Courses/layout.html' %}
+{% block body %}
+
+
+<style>
+    .uppercase {text-transform: uppercase;}
+    .header{  	height: 12vh;
+                background-image: 
+                linear-gradient(to right bottom, 
+                rgba(76, 216, 255, 0.8),
+                rgba(30, 108, 217, 0.8)),
+                url("images/sky_1.jpg");
+        
+                background-size: cover;
+                background-position: top;
+                position: relative;
+                text-align: center;
+  
+                clip-path: polygon(0 0, 40% 0, 70% 75vh, 0 100%);}
+    
+    .headerpos{ top: 10px;  
+                left: 40px;
+                position: absolute; }
+
+    .margin {   padding-bottom: 4px;
+                border-bottom: 2px solid black;}
+
+
+    .sansfont {font-family: sans-serif;}
+    .courfont {font-family: 'Courier New', Courier, monospace;}
+    .gillfont { font-size : 20px;
+                font-family: 'Trebuchet MS', sans-serif;}
+</style>
+
+
+<div class = "header gillfont">
+    <h1 class = "headerpos">Courses List:</h1>
+</div>
+
+<ul>
+    {% for Course in Courses %}
+    <li style = "width : 450px">
+        <div class = "gillfont margin">
+            <a href="{% url 'Course' Course.id %}">
+                {{ Course}}
+            </a>
+        </div>
+    </li>
+    {% empty %}
+    <li>No Course</li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

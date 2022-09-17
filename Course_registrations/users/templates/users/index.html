@@ -1,0 +1,45 @@
+{% extends 'users/layout.html' %}
+{% block body %}
+
+<style>
+    .curve {
+        width:700px;
+        height:10vh;
+        position:relative;
+        background-image: linear-gradient(#e8b5ff, #6c4ec0);
+        border-top-left-radius:2px;
+        border-top-right-radius:2px;
+        border-bottom-left-radius: 50% 60%;
+        border-bottom-right-radius: 50% 60%;
+        text-align: center;
+        border-bottom = 40px;
+        top: -30px;
+      }
+
+
+    .sansfont {font-family: sans-serif;}
+    .courfont {font-family: 'Courier New', Courier, monospace;}
+    .gillfont { font-size : 25px;
+                font-family: 'Trebuchet MS', sans-serif;}
+
+    .borderbottom { padding-top: 2px;
+                    padding-bottom: 4px;
+                    border-bottom: 2px solid black; }
+
+    
+</style>
+
+<div class = "curve gillfont">
+    <h1 style = "font-size : 37px; padding-top:25px;";>Welcome, {{ request.user.username }}</h1>
+</div>
+
+<body class = "gillfont">
+    <p class = "borderbottom" , style = "width : 300px">Username: {{ request.user.username }}</p>
+    <p class = "borderbottom" , style = "width : 500px">Email: {{ request.user.email }}</p>
+
+</body>
+
+<a href="{% url 'enrolled' %}" , style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Course Enrolled</a>
+<a href="{% url 'register' %}" , style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Register</a>
+
+{% endblock %}

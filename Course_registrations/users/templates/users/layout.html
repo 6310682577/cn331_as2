@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+    <head>
+        <title>Users</title>
+    </head>
+    <body>
+        <div>
+            <center>
+            {% block body %}
+            {% endblock %}
+            </center>
+        <div>
+        <div class="w3-sidebar w3-bar-block">
+            <a href="{% url 'enrolled' %}" class="w3-bar-item w3-button" style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Course Enrolled</a>
+            <a href="{% url 'course'%}" class="w3-bar-item w3-button" style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Course List</a>
+            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+        </div>
+        <a style="position: absolute;
+            width: 100px;
+            text-align:right;
+            top: 3vh; 
+            right: 3vh; 
+            width: 100px;
+            top: 0px;
+            text-align:right; 
+            font-size : 25px; 
+            font-family: sans-serif;"
+            href="{% url 'logout' %}">
+            Log out
+        </a>
+    </body>
+</html>
