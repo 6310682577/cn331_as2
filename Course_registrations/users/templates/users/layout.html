@@ -4,6 +4,35 @@
     <head>
         <title>Users</title>
     </head>
+
+    <style>
+        .gillfont { font-size : 25px;
+                    font-family: 'Trebuchet MS', sans-serif;}
+        .borderbottom { padding-top: 2px;
+                        padding-bottom: 4px;
+                        border-bottom: 2px solid black; }
+        
+        .body {
+            background-size: cover;
+            background-image: linear-gradient(to bottom right, #EAFDFF, #52B1FF);
+            height : 110%;
+        }
+        .urlpos {     position : absolute;
+                        text-align:left;
+                        vertical-align:top;
+                        top: 2vh;
+                        left : 5vh; 
+                        width: 500px; }
+        
+        .logoutpos {        position : absolute;
+                            text-align: right;
+                            vertical-align:top;
+                            top: 2vh;
+                            right : 3vh; 
+                            width: 500px; }
+      
+    </style>
+
     <body>
         <div>
             <center>
@@ -11,23 +40,11 @@
             {% endblock %}
             </center>
         <div>
-        <div class="w3-sidebar w3-bar-block">
-            <a href="{% url 'enrolled' %}" class="w3-bar-item w3-button" style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Course Enrolled</a>
-            <a href="{% url 'course'%}" class="w3-bar-item w3-button" style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Course List</a>
-            <a href="#" class="w3-bar-item w3-button">Link 3</a>
+        <div class="w3-sidebar w3-bar-block urlpos gillfont">
+            <a href="{% url 'enrolled' %}" class="w3-bar-item w3-button gillfont" style = "padding : 5px ; font-size : 20px ;">Course Enrolled</a>
+            <a href="{% url 'course'%}" class="w3-bar-item w3-button gillfont" style = " padding : 5px; font-size : 20px ;">Course List</a>
         </div>
-        <a style="position: absolute;
-            width: 100px;
-            text-align:right;
-            top: 3vh; 
-            right: 3vh; 
-            width: 100px;
-            top: 0px;
-            text-align:right; 
-            font-size : 25px; 
-            font-family: sans-serif;"
-            href="{% url 'logout' %}">
-            Log out
-        </a>
+        
+        <a class = "logoutpos gillfont" href="{% url 'logout' %}"> Log out </a>
     </body>
 </html>
