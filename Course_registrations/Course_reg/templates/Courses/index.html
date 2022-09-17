@@ -37,6 +37,10 @@
     <h1 class = "headerpos">Courses List:</h1>
 </div>
 
+<p>
+    <a href="{% url 'UserIndex' %}" class = "gillfont indexpos" style = "font-size : 25px">Back to Index</a>
+</p>
+
 <ul>
     {% for Course in Courses %}
     <li style = "width : 450px">
