@@ -3,56 +3,63 @@
 
 
 <style>
-    .uppercase {text-transform: uppercase;}
-    .header{  	height: 12vh;
-                background-image: 
-                linear-gradient(to right bottom, 
-                rgba(76, 216, 255, 0.8),
-                rgba(30, 108, 217, 0.8)),
-                url("images/sky_1.jpg");
-        
-                background-size: cover;
-                background-position: top;
-                position: relative;
-                text-align: center;
-  
-                clip-path: polygon(0 0, 40% 0, 70% 75vh, 0 100%);}
-    
+    .curve {
+        width:700px;
+        height:12vh;
+        position:relative;
+        background-image: linear-gradient(#A9FF8B , #5FFF68);
+        border-top-left-radius:2px;
+        border-top-right-radius:2px;
+        border-bottom-left-radius: 50% 60%;
+        border-bottom-right-radius: 50% 60%;
+        text-align: center;
+        border-bottom = 40px;
+      }
+
+
     .headerpos{ top: 10px;  
                 left: 40px;
                 position: absolute; }
 
-    .margin {   padding-bottom: 4px;
-                border-bottom: 2px solid black;
-                width: 25% }
 
-
-    .sansfont {font-family: sans-serif;}
-    .courfont {font-family: 'Courier New', Courier, monospace;}
     .gillfont { font-size : 20px;
                 font-family: 'Trebuchet MS', sans-serif;}
+
+    .body {
+        background-size: cover;
+        background-image: linear-gradient(to bottom right, #FFFFFF, #B8FFFC);
+        height : 100vh;
+    
+    }
+
+    .borderbottom { padding-top: 2px;
+                    padding-bottom: 4px;
+                    border-bottom: 2px solid black;
+                    width : 400px ;  }
 </style>
 
-<div class = "curve gillfont">
-    <h1 style = "font-size : 37px ;">Courses Enrolled List:</h1>
-</div>
+<div class = "body">
+    <div class = "curve gillfont">
+        <h1 style = "font-size : 37px ;">Courses Enrolled List:</h1>
+    </div>
 
-<p>
-    <a href="{% url 'index' %}" class = "gillfont indexpos" >Back to Index</a>
-</p>
-
-<ul>
-    {% for enrolled in Enrolled.all %}
     <p>
-        <div class = "gillfont margin">
-            {{ enrolled.subject_id.subject_id }}
-            {{ enrolled.subject_id.subject }}
-            {{ enrolled.section }}
-        </div>
+        <a href="{% url 'index' %}" class = "gillfont indexpos" style = "font-size : 25px">Back to Index</a>
     </p>
-    {% empty %}
-    <li>No Course</li>
-    {% endfor %}
-</ul>
 
-{% endblock %}
+    <ul>
+        {% for enrolled in Enrolled.all %}
+        <p>
+            <div class = "gillfont margin borderbottom" style = "font-size : 27px">
+                {{ enrolled.subject_id.subject_id }}
+                {{ enrolled.subject_id.subject }}
+                {{ enrolled.section }}
+            </div>
+        </p>
+        {% empty %}
+        <li>No Course</li>
+        {% endfor %}
+    </ul>
+
+    {% endblock %}
+</div>

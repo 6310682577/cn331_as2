@@ -13,33 +13,42 @@
         border-bottom-right-radius: 50% 60%;
         text-align: center;
         border-bottom = 40px;
-        top: -30px;
+        top: -20px;
       }
 
 
-    .sansfont {font-family: sans-serif;}
-    .courfont {font-family: 'Courier New', Courier, monospace;}
     .gillfont { font-size : 25px;
                 font-family: 'Trebuchet MS', sans-serif;}
 
     .borderbottom { padding-top: 2px;
                     padding-bottom: 4px;
                     border-bottom: 2px solid black; }
+    
+                    .body {
+        background-size: cover;
+        background-image: linear-gradient(to bottom right, #FFFFFF, #B8FFFC);
+        height : 100vh;
+    
+    }
 
     
 </style>
 
-<div class = "curve gillfont">
-    <h1 style = "font-size : 37px; padding-top:25px;";>Welcome, {{ request.user.username }}</h1>
+<div class = "body">
+    <div class = "curve gillfont">
+        <h1 style = "font-size : 37px; padding-top:25px;";>Welcome, {{ request.user.username }}</h1>
+    </div>
+
+    <body class = "gillfont">
+        <p class = "borderbottom" , style = "width : 300px">Username: {{ request.user.username }}</p>   
+        <p class = "borderbottom" , style = "width : 450px">Email: {{ request.user.email }}</p>
+
+    </body>
+
+    <a href="{% url 'enrolled' %}" , class = "gillfont" style = "top : 20px ; position : relative">Course Enrolled</a>
+    <a href="{% url 'register' %}" , class = "gillfont" style = "top : 20px ; position : relative">Register</a>
+
+    {% endblock %}
+
+
 </div>
-
-<body class = "gillfont">
-    <p class = "borderbottom" , style = "width : 300px">Username: {{ request.user.username }}</p>
-    <p class = "borderbottom" , style = "width : 500px">Email: {{ request.user.email }}</p>
-
-</body>
-
-<a href="{% url 'enrolled' %}" , style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Course Enrolled</a>
-<a href="{% url 'register' %}" , style = "font-size : 25px ; font-family: sans-serif ; padding : 5px">Register</a>
-
-{% endblock %}
