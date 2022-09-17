@@ -23,7 +23,8 @@
                 position: absolute; }
 
     .margin {   padding-bottom: 4px;
-                border-bottom: 2px solid black;}
+                border-bottom: 2px solid black;
+                width: 25% }
 
 
     .sansfont {font-family: sans-serif;}
@@ -42,7 +43,7 @@
 
 <ul>
     {% for enrolled in Enrolled.all %}
-    <p style = "width : 10px">
+    <p>
         <div class = "gillfont margin">
             {{ enrolled.subject_id.subject_id }}
             {{ enrolled.subject_id.subject }}

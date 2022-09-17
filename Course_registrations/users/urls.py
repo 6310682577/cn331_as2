@@ -1,13 +1,15 @@
 from django.urls import path
 
-from . import views
+from Course_reg import views as Cviews
+from . import views as Uviews
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('login', views.login_view, name='login'),
-    path('logout', views.logout_view, name='logout'),
-    path('register', views.register_view, name='register'),
-    path('enrolled', views.enrolled_view, name='enrolled'),
-    path('enroll', views.enroll, name='enroll'),
-    path('del_enroll', views.del_enroll, name='del_enroll'),
+    path('', Uviews.index, name='index'),
+    path('login', Uviews.login_view, name='login'),
+    path('logout', Uviews.logout_view, name='logout'),
+    path('register', Uviews.register_view, name='register'),
+    path('enrolled', Uviews.enrolled_view, name='enrolled'),
+    path('enroll', Uviews.enroll, name='enroll'),
+    path('del_enroll', Uviews.del_enroll, name='del_enroll'),
+    path('../Course_reg', Cviews.course, name='course')
 ]

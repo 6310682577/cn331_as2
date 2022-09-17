@@ -13,6 +13,7 @@
         border-bottom-right-radius: 50% 60%;
         text-align: center;
         border-bottom = 40px;
+        top: -30px;
       }
 
 
@@ -29,12 +30,12 @@
 </style>
 
 <div class = "curve gillfont">
-    <h1 style = "font-size : 37px ;">Welcome, {{ request.user.username }}</h1>
+    <h1 style = "font-size : 37px; padding-top:25px;";>Welcome, {{ request.user.username }}</h1>
 </div>
 
 <body class = "gillfont">
-    <p class = "borderbottom" , style = "width : 350px">Username: {{ request.user.username }}</p>
-    <p class = "borderbottom" , style = "width : 350px">Email: {{ request.user.email }}</p>
+    <p class = "borderbottom" , style = "width : 300px">Username: {{ request.user.username }}</p>
+    <p class = "borderbottom" , style = "width : 500px">Email: {{ request.user.email }}</p>
 
 </body>
 

@@ -64,7 +64,7 @@ def register_view(request):
     })
 
 def enrolled_view(request):
-    enrolled = Student.objects.get(name__username=request.user).course_enroll
+    enrolled = Student.objects.get(name__username=request.user).course_enroll.order_by('subject_id')
     return render(request, 'users/enrolled.html', {
         'Enrolled' : enrolled
     })
