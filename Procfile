@@ -1,1 +1,1 @@
-web: gunicorn course-reg12355s:app
+web: gunicorn --pythonpath Course_registrations Course_registrations.wsgi
