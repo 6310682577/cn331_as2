@@ -27,4 +27,4 @@ jobs:
         pip install -r Course_registrations/requirements.txt
     - name: Run Tests
       run: |
-        python manage.py test
+        python Course_registrations/manage.py test
