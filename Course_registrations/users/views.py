@@ -74,9 +74,7 @@ def enrolled_view(request):
 def enroll(request):
     if request.method == "POST":
         date = Date.objects.get(subject_id__subject_id=request.POST['subject_id'], section=request.POST['section'])
-        student = Student.objects.get(name__username=request.user)
-        print(date.seat)
-        print(student.course_enroll.all())
+        student = Student.objects.get(name__username=request.POST['student'])
         if date not in student.course_enroll.all():
             Date.objects.filter(subject_id__subject_id=request.POST['subject_id'], section=request.POST['section']).update(seat=(date.seat - 1))
             if date.seat == 0:
@@ -87,7 +85,7 @@ def enroll(request):
 def del_enroll(request):
     if request.method == "POST":
         date = Date.objects.get(subject_id__subject_id=request.POST['subject_id'], section=request.POST['section'])
-        student = Student.objects.get(name__username=request.user)
+        student = Student.objects.get(name__username=request.POST['student'])
         if date in student.course_enroll.all():
             Date.objects.filter(subject_id__subject_id=request.POST['subject_id'], section=request.POST['section']).update(seat=(date.seat + 1))
         student.course_enroll.remove(date)
