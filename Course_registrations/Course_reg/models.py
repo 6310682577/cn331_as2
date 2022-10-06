@@ -33,6 +33,11 @@ class Date(models.Model):
     def __str__(self):
         return f'{self.subject_id}: {self.section} {self.start_time} {self.end_time} {self.day} {self.seat}'
 
+    def is_seat_avaliable(self):
+        if self.seat > 0:
+            return True
+        return False
+
 class Student(models.Model):
     name = models.ForeignKey(User, on_delete=models.CASCADE)
     course_enroll = models.ManyToManyField(Date, related_name='student')
