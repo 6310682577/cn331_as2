@@ -1,7 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Create your models here.
+
+@receiver(post_save, sender=User)
+def create_user_picks(sender, instance, created, **kwargs):
+    if created:
+        Student.objects.create(name=instance)
 
 class Course(models.Model):
     subject = models.CharField(max_length=50)
@@ -25,6 +32,11 @@ class Date(models.Model):
 
     def __str__(self):
         return f'{self.subject_id}: {self.section} {self.start_time} {self.end_time} {self.day} {self.seat}'
+
+    def is_seat_avaliable(self):
+        if self.seat > 0:
+            return True
+        return False
 
 class Student(models.Model):
     name = models.ForeignKey(User, on_delete=models.CASCADE)
