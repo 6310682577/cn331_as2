@@ -127,6 +127,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATIC_ROOT='staticfiles'
 
-if os.environ.get('ENVIRONMENT') != 'github':
+if os.environ.get('ENVIRONMENT') == 'HEROKU':
     import django_heroku
     django_heroku.settings(locals())
