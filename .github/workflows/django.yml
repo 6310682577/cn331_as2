@@ -29,5 +29,5 @@ jobs:
       run: |
         python Course_registrations/manage.py makemigrations
         python Course_registrations/manage.py migrate
-        coverage run --source='.' Course_registrations/manage.py test
+        coverage run --source='Course_registrations/' Course_registrations/manage.py test
         coverage report
